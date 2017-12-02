@@ -2,12 +2,13 @@
 
 @section('content')
 
-    <pagina tamanho="10">
-        <painel titulo="Dashboard"> 
+    <pagina tamanho="12">
+        <painel titulo="Dashboard">
             {{-- <p>Conteudo do slot</p> --}}
+            <breadcumbs :lista="{{ $breadcumbs }}"></breadcumbs>
             <div class="row">
                 <div class="col-lg-3">
-                    <caixa qtd="120" titulo="Artigos" cor="bg-yellow" icone="fa fa-newspaper-o" url="home#"></caixa>
+                    <caixa qtd="120" titulo="Artigos" cor="bg-yellow" icone="fa fa-newspaper-o" url="{{ route('artigos.index') }}"></caixa>
                 </div>
 
                 <div class="col-lg-3">

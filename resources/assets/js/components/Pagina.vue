@@ -2,6 +2,7 @@
   <div class="container">
         <div class="row">
             <div :class="defineTamanho">
+              
                 <slot></slot>
               </div>
         </div>
