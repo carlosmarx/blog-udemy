@@ -16,9 +16,14 @@ class ArticleController extends Controller
     {
         $breadcumbs = json_encode([
             ["titulo" => "Home", "url" => route('home')],
-            ["titulo" => "Artigos", "url" => ""],
+            ["titulo" => "Lista de Artigos", "url" => ""],
         ]);
-        return view('admin.artigos.index', compact('breadcumbs'));
+
+        $listaArtigos = json_encode([
+            ["id" => 301, "titulo" => "Curos de php", "descricao" => 'Uma descriçåo normal', "author" => 'Carlos Marx', "created_at" => '04/12/2017'],
+            ["id" => 302, "titulo" => "Laravel com VueJS", "descricao" => ' Descriçåo simples', "author" => 'Ryan Lucas', "created_at" => '01/12/2017'],
+        ]);
+        return view('admin.artigos.index', compact('breadcumbs', 'listaArtigos'));
     }
 
     /**

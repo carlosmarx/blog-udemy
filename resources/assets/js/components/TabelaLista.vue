@@ -1,14 +1,18 @@
 <template>
   <div>
 
-    <div class="form-inline">
-    <a v-if="criar" class="btn btn-info" :href="criar">Criar Artigo</a>
-      <div class="form-group pull-right">
-        <input type="search" class="form-control" placeholder="Buscar" v-model="buscar">
+    
+    <div class="col-lg-12">
+      <div class="form-inline">
+        <!-- <a v-if="criar" class="btn btn-info" :href="criar">Criar Artigo</a> -->
+        <button-modal title="Cadastrar Artigo" name-modal="myModal" type="button" css="btn btn-success"></button-modal>
+        <div class="form-group pull-right">
+          <input type="search" class="form-control" placeholder="Buscar" v-model="buscar">
+        </div>
       </div>
+      <hr>
     </div>
 
-    <hr>
     <table class="table table-hover table-striped table-bordered">
       <thead>
         <tr>
@@ -83,32 +87,34 @@
 
         if (order == "asc") {
           this.itens.sort(function(a,b){
-            if(a[orderColumn] > b[orderColumn]){ return 1 }
-            if(a[orderColumn] < b[orderColumn]){ return -1 }
+            if(Object.values(a)[orderColumn] > Object.values(b)[orderColumn]){ return 1 }
+            if(Object.values(a)[orderColumn] < Object.values(b)[orderColumn]){ return -1 }
             return 0
           })
         }
         else {
           this.itens.sort(function(a,b){
-            if(a[orderColumn] < b[orderColumn]){ return 1 }
-            if(a[orderColumn] > b[orderColumn]){ return -1 }
+            if(Object.values(a)[orderColumn] < Object.values(b)[orderColumn]){ return 1 }
+            if(Object.values(a)[orderColumn] > Object.values(b)[orderColumn]){ return -1 }
             return 0
           })
         }
         //End order by column
 
         //Start filter
-        return this.itens.filter(response => {
+        if (this.buscar) {
+          return this.itens.filter(response => {
 
-          for (let i = 0; i < response.length; i++) {
-            if((response[i]+"").toLowerCase().indexOf(this.buscar.toLowerCase()) >= 0)
-            {
-              return true;
+            for (let i = 0; i < response.length; i++) {
+              if((response[i]+"").toLowerCase().indexOf(this.buscar.toLowerCase()) >= 0)
+              {
+                return true;
+              }
             }
-          }
-              return false
-          
-        })
+                return false
+            
+          })
+        }
         //End filter
 
         return this.itens
