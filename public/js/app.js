@@ -1375,7 +1375,7 @@ function applyToTag (styleElement, obj) {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(13);
-module.exports = __webpack_require__(70);
+module.exports = __webpack_require__(73);
 
 
 /***/ }),
@@ -1407,7 +1407,7 @@ Vue.component('tabela-lista', __webpack_require__(58));
 Vue.component('breadcumbs', __webpack_require__(61));
 Vue.component('modal', __webpack_require__(64));
 Vue.component('button-modal', __webpack_require__(67));
-Vue.component('formulario', __webpack_require__(79));
+Vue.component('formulario', __webpack_require__(70));
 
 var app = new Vue({
   el: '#app'
@@ -43804,9 +43804,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['titulos', 'itens', 'order', 'orderColumn', 'criar', 'exibir', 'editar', 'deletar', 'token'],
+  props: ['titulos', 'itens', 'order', 'orderColumn', 'criar', 'exibir', 'editar', 'deletar', 'token', 'modal'],
   data: function data() {
     return {
       buscar: '',
@@ -43897,14 +43898,24 @@ var render = function() {
         "div",
         { staticClass: "form-inline" },
         [
-          _c("button-modal", {
-            attrs: {
-              title: "Cadastrar Artigo",
-              "name-modal": "myModal",
-              type: "button",
-              css: "btn btn-success"
-            }
-          }),
+          _vm.criar && !_vm.modal
+            ? _c(
+                "a",
+                { staticClass: "btn btn-info", attrs: { href: _vm.criar } },
+                [_vm._v("Criar Artigo")]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.criar && _vm.modal
+            ? _c("button-modal", {
+                attrs: {
+                  title: "Cadastrar Artigo",
+                  "name-modal": "adicionarArtigo",
+                  type: "button",
+                  css: "btn btn-success"
+                }
+              })
+            : _vm._e(),
           _vm._v(" "),
           _c("div", { staticClass: "form-group pull-right" }, [
             _c("input", {
@@ -44034,15 +44045,15 @@ var render = function() {
                               )
                             : _vm._e(),
                           _vm._v(" "),
-                          _vm.editar
-                            ? _c(
-                                "a",
-                                {
-                                  staticClass: "btn btn-warning",
-                                  attrs: { href: _vm.editar }
-                                },
-                                [_vm._v("Editar")]
-                              )
+                          _vm.editar && _vm.modal
+                            ? _c("button-modal", {
+                                attrs: {
+                                  title: "Editar",
+                                  "name-modal": "editarArtigo",
+                                  type: "button",
+                                  css: "btn btn-warning"
+                                }
+                              })
                             : _vm._e(),
                           _vm._v(" "),
                           _vm.deletar && _vm.token
@@ -44060,7 +44071,8 @@ var render = function() {
                                 [_vm._v("Deletar")]
                               )
                             : _vm._e()
-                        ]
+                        ],
+                        1
                       )
                     : _vm._e()
                 ])
@@ -44494,28 +44506,14 @@ if (false) {
 
 /***/ }),
 /* 70 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 71 */,
-/* 72 */,
-/* 73 */,
-/* 74 */,
-/* 75 */,
-/* 76 */,
-/* 77 */,
-/* 78 */,
-/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(80)
+var __vue_script__ = __webpack_require__(71)
 /* template */
-var __vue_template__ = __webpack_require__(81)
+var __vue_template__ = __webpack_require__(72)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -44555,7 +44553,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 80 */
+/* 71 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -44594,7 +44592,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 81 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -44640,6 +44638,12 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-24dfab2e", module.exports)
   }
 }
+
+/***/ }),
+/* 73 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

@@ -4,8 +4,8 @@
     
     <div class="col-lg-12">
       <div class="form-inline">
-        <!-- <a v-if="criar" class="btn btn-info" :href="criar">Criar Artigo</a> -->
-        <button-modal title="Cadastrar Artigo" name-modal="myModal" type="button" css="btn btn-success"></button-modal>
+        <a v-if="criar && !modal" class="btn btn-info" :href="criar">Criar Artigo</a>
+        <button-modal v-if="criar && modal" title="Cadastrar Artigo" name-modal="adicionarArtigo" type="button" css="btn btn-success"></button-modal>
         <div class="form-group pull-right">
           <input type="search" class="form-control" placeholder="Buscar" v-model="buscar">
         </div>
@@ -41,7 +41,8 @@
               <input type="hidden" name="_token" :value="token">
 
               <a class="btn btn-success" :href="exibir" v-if="exibir" >Exibir</a>
-              <a class="btn btn-warning" :href="editar" v-if="editar" >Editar</a>
+              <!-- <a class="btn btn-warning" :href="editar" v-if="editar" >Editar</a> -->
+              <button-modal v-if="editar && modal" title="Editar" name-modal="editarArtigo" type="button" css="btn btn-warning"></button-modal>
               <button class="btn btn-danger" :href="deletar" v-if="deletar && token" v-on:click="executaForm(index)">Deletar</button>
             </form>
           </td>
@@ -52,7 +53,7 @@
 </template>
 <script>
   export default {
-    props: ['titulos', 'itens', 'order', 'orderColumn' , 'criar', 'exibir', 'editar', 'deletar', 'token'],
+    props: ['titulos', 'itens', 'order', 'orderColumn' , 'criar', 'exibir', 'editar', 'deletar', 'token', 'modal'],
     data() {
       return {
         buscar: '',

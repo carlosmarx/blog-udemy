@@ -17,6 +17,7 @@
               editar="#editar" 
               deletar="#url_deletar" 
               token="#token"
+              modal="sim"
               >
                 
               </tabela-lista>
@@ -24,7 +25,23 @@
         </painel>
     </pagina>
 
-    <modal name-modal="myModal" title="Cadastro de Artigo">
+    <modal name-modal="adicionarArtigo" title="Cadastro de Artigo">
+       <formulario css="" method='put' action="#" enctype="multipart/form-data" token="token">
+         <div class="form-group">
+           <label for="titulo">Titulo:</label>
+           <input type="text" name="titulo" class="form-control" id="titulo" placeholder="Titulo">
+         </div>
+         <div class="form-group">
+           <label for="titulo">Descrição:</label>
+           <input type="text" name="descricao" class="form-control" id="descricao" placeholder="Descrição">
+         </div>
+         <div class="form-group">
+          <button class="btn btn-success" type="submit">Salvar Artigo</button>
+         </div>
+       </formulario>
+    </modal>
+
+    <modal name-modal="editarArtigo" title="Edição de Artigo">
        <formulario css="" method='put' action="#" enctype="multipart/form-data" token="token">
          <div class="form-group">
            <label for="titulo">Titulo:</label>
