@@ -35,6 +35,7 @@
         <tr v-for="(item, index) in lista">
           <td v-for="i in item">{{ i }}</td>
           <td>
+            
             <form :id="index" :action="deletar" v-if="exibir || editar || deletar" method="POST">
 
               <input type="hidden" name="_method" value="DELETE">
